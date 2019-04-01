@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+
+
+
+
+    </group>
+
+
+
+    <item android:title="">
+        <menu>
+
+
+            <item
+                android:id="@+id/navItem1"
+                android:icon="@mipmap/history"
+                android:title="健康数据分析" />
+
+            <item
+                android:id="@+id/navItem2"
+                android:icon="@mipmap/set"
+                android:title="设置" />
+            <item
+                android:id="@+id/navItem3"
+                android:icon="@mipmap/out"
+                android:title="退出" />
+        </menu>
+    </item>
+
+
+</menu>
