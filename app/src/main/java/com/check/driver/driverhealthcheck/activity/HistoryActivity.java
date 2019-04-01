@@ -1,6 +1,5 @@
 package com.check.driver.driverhealthcheck.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;

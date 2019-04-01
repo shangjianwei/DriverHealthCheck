@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.check.driver.driverhealthcheck.activity.SimulationActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="模拟汽车及硬件设备，生成的数据会在对应区间内生成"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="wrap_content"
+            android:text="温度区间:"/>
+       <EditText
+           android:id="@+id/tem_low"
+           android:layout_width="@dimen/dp_100"
+           android:inputType="number"
+           android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="wrap_content"
+            android:text="-"/>
+        <EditText
+            android:id="@+id/tem_up"
+            android:inputType="number"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="wrap_content"
+            android:text="湿度区间:"/>
+        <EditText
+            android:id="@+id/wet_low"
+            android:layout_width="@dimen/dp_100"
+            android:inputType="number"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="wrap_content"
+            android:text="-"/>
+        <EditText
+            android:id="@+id/wet_up"
+            android:layout_width="@dimen/dp_100"
+            android:inputType="number"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="wrap_content"
+            android:text="一氧化碳区间:"/>
+        <EditText
+            android:id="@+id/co_low"
+            android:layout_width="@dimen/dp_100"
+            android:inputType="number"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="wrap_content"
+            android:text="-"/>
+        <EditText
+            android:id="@+id/co_up"
+            android:layout_width="@dimen/dp_100"
+            android:inputType="number"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="wrap_content"
+            android:text="心率区间:"/>
+        <EditText
+            android:id="@+id/heart_low"
+            android:layout_width="@dimen/dp_100"
+            android:inputType="number"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="wrap_content"
+            android:text="-"/>
+        <EditText
+            android:id="@+id/heart_up"
+            android:layout_width="@dimen/dp_100"
+            android:inputType="number"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="wrap_content"
+        android:text="低血压区间:"/>
+    <EditText
+        android:id="@+id/bp_L_low"
+        android:layout_width="@dimen/dp_100"
+        android:inputType="number"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="@dimen/dp_10"
+        android:layout_height="wrap_content"
+        android:text="-"/>
+    <EditText
+        android:id="@+id/bp_L_up"
+        android:layout_width="@dimen/dp_100"
+        android:inputType="number"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="wrap_content"
+            android:text="高血压区间:"/>
+        <EditText
+            android:id="@+id/bp_low"
+            android:layout_width="@dimen/dp_100"
+            android:inputType="number"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="wrap_content"
+            android:text="-"/>
+        <EditText
+            android:id="@+id/bp_up"
+            android:layout_width="@dimen/dp_100"
+            android:inputType="number"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="wrap_content"
+            android:text="血脂区间:"/>
+        <EditText
+            android:id="@+id/bf_low"
+            android:layout_width="@dimen/dp_100"
+            android:inputType="number"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="wrap_content"
+            android:text="-"/>
+        <EditText
+            android:id="@+id/bf_up"
+            android:layout_width="@dimen/dp_100"
+            android:inputType="number"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="wrap_content"
+            android:text="数据生成间隔:"/>
+        <EditText
+            android:id="@+id/time"
+            android:layout_width="@dimen/dp_210"
+            android:inputType="number"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <Button
+        android:onClick="onDoneClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存修改"/>
+</LinearLayout>

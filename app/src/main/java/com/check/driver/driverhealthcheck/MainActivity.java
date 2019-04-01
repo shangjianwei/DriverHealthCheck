@@ -12,7 +12,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.check.driver.driverhealthcheck.activity.HistoryActivity;
+import com.check.driver.driverhealthcheck.activity.SimulationActivity;
 import com.check.driver.driverhealthcheck.base.BaseActivity;
+import com.check.driver.driverhealthcheck.base.BaseMessageInit;
+import com.check.driver.driverhealthcheck.bean.BaseSetBean;
+import com.check.driver.driverhealthcheck.bean.CarOnBean;
+import com.check.driver.driverhealthcheck.bean.MessageBean;
+import com.check.driver.driverhealthcheck.service.MyService;
+import com.check.driver.driverhealthcheck.utils.SPUtils;
+
+import org.litepal.LitePal;
+import org.litepal.crud.LitePalSupport;
+import org.litepal.crud.callback.FindMultiCallback;
+
+import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -40,9 +53,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initGetItem();
         initView();
         initListener();
         initData();
+    }
+
+    private void initGetItem() {
+        //判断汽车是不是在启动状态
+
+        BaseSetBean albumToUpdate = LitePal.find(BaseSetBean.class, 1);
+        if (albumToUpdate == null) {
+            //第一次安装没有数据
+            albumToUpdate = new BaseSetBean();
+            albumToUpdate.setFirst();
+            //设置默认数据
+            albumToUpdate.save();
+        }
+        BaseMessageInit.INSTENCE.setBaseSetBean(albumToUpdate);
     }
 
     private void initData() {
@@ -55,8 +83,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         goToActivity(HistoryActivity.class);
                         break;
                     case R.id.navItem2:
-                        showToast("2");
-
+                        goToActivity(SimulationActivity.class);
                         break;
                     case R.id.navItem3:
                         //退出
@@ -74,22 +101,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void initView() {
-        ivMenu=findViewById(R.id.iv_menu);
+        ivMenu = findViewById(R.id.iv_menu);
         drawerLayout = (DrawerLayout) findViewById(R.id.dl_home);
         navigationView = (NavigationView) findViewById(R.id.navigation);
-        tvDriveTime=findViewById(R.id.tv_drive_time);
+        tvDriveTime = findViewById(R.id.tv_drive_time);
         tvDriveNote=findViewById(R.id.tv_drive_note);
-        tvTemperature=findViewById(R.id.tv_temperature);
+        tvTemperature = findViewById(R.id.tv_temperature);
         tvTempNote=findViewById(R.id.tv_temp_note);
-        tvHumidity=findViewById(R.id.tv_humidity);
+        tvHumidity = findViewById(R.id.tv_humidity);
         tvHumidityNote=findViewById(R.id.tv_humidity_note);
-        tvCOConcentration=findViewById(R.id.tv_CO_concentration);
+        tvCOConcentration = findViewById(R.id.tv_CO_concentration);
         tvCONote=findViewById(R.id.tv_CO_note);
-        tvHeartRate=findViewById(R.id.tv_heart_rate);
+        tvHeartRate = findViewById(R.id.tv_heart_rate);
         tvHeartRateNote=findViewById(R.id.tv_heart_rate_note);
-        tvBloodPressure=findViewById(R.id.tv_blood_pressure);
+        tvBloodPressure = findViewById(R.id.tv_blood_pressure);
         tvBloodPressureNote=findViewById(R.id.tv_blood_pressure_note);
-        tvBloodFat=findViewById(R.id.tv_blood_fat);
+        tvBloodFat = findViewById(R.id.tv_blood_fat);
         tvBloodFatNote=findViewById(R.id.tv_blood_fat_note);
     }
 
