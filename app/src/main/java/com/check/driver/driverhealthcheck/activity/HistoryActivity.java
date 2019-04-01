@@ -7,6 +7,7 @@ import com.check.driver.driverhealthcheck.R;
 import com.check.driver.driverhealthcheck.base.BaseActivity;
 
 public class HistoryActivity extends BaseActivity {
+    //我是小哼哼啊
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
