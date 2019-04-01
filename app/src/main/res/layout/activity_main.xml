@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#ffffff"
     tools:context="com.check.driver.driverhealthcheck.MainActivity">
 
     <RelativeLayout
@@ -41,192 +42,335 @@
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:layout_height="match_parent">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="汽车内信息："
-                    android:layout_marginTop="@dimen/dp_10"
-                    android:layout_marginLeft="@dimen/dp_10"
-                    />
+
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_20"
-                    android:background="@drawable/edit_background"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
 
-                    <LinearLayout
+                        android:layout_marginTop="@dimen/dp_4"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:orientation="horizontal">
-
-                        <TextView
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/iv_point"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:text="已启动时间：" />
+                            android:src="@mipmap/point"/>
+                        <TextView
+                            android:layout_toRightOf="@+id/iv_point"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:text="已驾驶时间"/>
 
                         <TextView
                             android:id="@+id/tv_drive_time"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:layout_marginRight="@dimen/dp_10"
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:orientation="horizontal">
-
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:text="温度：" />
+                            android:layout_centerInParent="true"
+                            android:text="100分钟"
+                            />
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_drive_note"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_50"
+                        android:textColor="#CCCDCF"
+                        android:layout_marginBottom="@dimen/dp_3"
+                        android:text="驾驶时间正常"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:background="#F8F8F8"
+                    android:layout_height="@dimen/dp_2">
+
+                </View>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/iv_point1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/point"/>
+                        <TextView
+                            android:layout_toRightOf="@+id/iv_point1"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:text="温度"/>
 
                         <TextView
                             android:id="@+id/tv_temperature"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:layout_marginRight="@dimen/dp_10"
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:orientation="horizontal">
-
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:text="湿度：" />
+                            android:layout_centerInParent="true"
+                            android:text="25℃"
+                            />
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_temp_note"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_50"
+                        android:textColor="#CCCDCF"
+                        android:layout_marginBottom="@dimen/dp_3"
+                        android:text="温度正常"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:background="#F8F8F8"
+                    android:layout_height="@dimen/dp_2"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/iv_point2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/point"/>
+                        <TextView
+                            android:layout_toRightOf="@+id/iv_point2"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:text="湿度"/>
 
                         <TextView
                             android:id="@+id/tv_humidity"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:layout_marginRight="@dimen/dp_10"
-
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/dp_10"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:orientation="horizontal">
-
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:text="一氧化碳浓度：" />
+                            android:layout_centerInParent="true"
+                            android:text="30%"
+                            />
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_humidity_note"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_50"
+                        android:textColor="#CCCDCF"
+                        android:layout_marginBottom="@dimen/dp_3"
+                        android:text="湿度正常"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:background="#F8F8F8"
+                    android:layout_height="@dimen/dp_2"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/iv_point3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/point"/>
+                        <TextView
+                            android:layout_toRightOf="@+id/iv_point3"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:text="一氧化碳浓度"/>
 
                         <TextView
                             android:id="@+id/tv_CO_concentration"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:layout_marginRight="@dimen/dp_10"
-
-                            />
-                    </LinearLayout>
-
-
-                </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="驾驶人信息："
-                    android:layout_marginTop="@dimen/dp_10"
-                    android:layout_marginLeft="@dimen/dp_10"
-                    />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_20"
-                    android:background="@drawable/edit_background"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:orientation="horizontal">
-
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:text="心率：" />
+                            android:layout_centerInParent="true"
+                            android:text="10mg/m³"
+                            />
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_CO_note"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_50"
+                        android:textColor="#CCCDCF"
+                        android:layout_marginBottom="@dimen/dp_3"
+                        android:text="一氧化碳浓度正常"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:background="#F8F8F8"
+                    android:layout_height="@dimen/dp_2"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/iv_point4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/point"/>
+                        <TextView
+                            android:layout_toRightOf="@+id/iv_point4"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:text="心率"/>
 
                         <TextView
                             android:id="@+id/tv_heart_rate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:layout_marginRight="@dimen/dp_10"
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:orientation="horizontal">
-
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:text="血压：" />
+                            android:layout_centerInParent="true"
+                            android:text="73"
+                            />
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_heart_rate_note"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_50"
+                        android:textColor="#CCCDCF"
+                        android:layout_marginBottom="@dimen/dp_3"
+                        android:text="心率正常"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:background="#F8F8F8"
+                    android:layout_height="@dimen/dp_2"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/iv_point5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/point"/>
+                        <TextView
+                            android:layout_toRightOf="@+id/iv_point5"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:text="血压"/>
 
                         <TextView
                             android:id="@+id/tv_blood_pressure"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:layout_marginRight="@dimen/dp_10"
-                            />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/dp_10"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:orientation="horizontal">
-
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:text="血脂：" />
+                            android:layout_centerInParent="true"
+                            android:text="116/74"
+                            />
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_blood_pressure_note"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_50"
+                        android:textColor="#CCCDCF"
+                        android:layout_marginBottom="@dimen/dp_3"
+                        android:layout_marginRight="@dimen/dp_20"
+                        android:text="血压正常"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:background="#F8F8F8"
+                    android:layout_height="@dimen/dp_2"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/iv_point6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/point"/>
+                        <TextView
+                            android:layout_toRightOf="@+id/iv_point6"
+                            android:layout_centerVertical="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:text="血脂"/>
 
                         <TextView
                             android:id="@+id/tv_blood_fat"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:layout_marginRight="@dimen/dp_10"
-
+                            android:layout_centerInParent="true"
+                            android:text="0.46"
                             />
-                    </LinearLayout>
-
-
-
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_blood_fat_note"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_50"
+                        android:textColor="#CCCDCF"
+                        android:layout_marginBottom="@dimen/dp_3"
+                        android:text="血脂正常"/>
 
                 </LinearLayout>
+
+
             </LinearLayout>
 
         </android.support.design.widget.CoordinatorLayout>

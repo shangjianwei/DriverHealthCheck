@@ -20,12 +20,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private NavigationView navigationView;
     private ImageView ivMenu;  //菜单按钮
     private TextView tvDriveTime;  //驾驶时间
+    private TextView tvDriveNote;  //驾驶建议
     private TextView tvTemperature;  //车内温度
+    private TextView tvTempNote;  //温度建议
     private TextView tvHumidity;  //车内湿度
+    private TextView tvHumidityNote; //湿度建议
     private TextView tvCOConcentration; //一氧化碳浓度
+    private TextView tvCONote; //CO浓度建议
     private TextView tvHeartRate;   //心率
+    private TextView tvHeartRateNote; //心率建议
     private TextView tvBloodPressure;  //血压
+    private TextView tvBloodPressureNote;// 血压建议
     private TextView tvBloodFat;   //血脂
+    private TextView tvBloodFatNote; //血脂建议
 
 
 
@@ -71,13 +78,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         drawerLayout = (DrawerLayout) findViewById(R.id.dl_home);
         navigationView = (NavigationView) findViewById(R.id.navigation);
         tvDriveTime=findViewById(R.id.tv_drive_time);
+        tvDriveNote=findViewById(R.id.tv_drive_note);
         tvTemperature=findViewById(R.id.tv_temperature);
+        tvTempNote=findViewById(R.id.tv_temp_note);
         tvHumidity=findViewById(R.id.tv_humidity);
+        tvHumidityNote=findViewById(R.id.tv_humidity_note);
         tvCOConcentration=findViewById(R.id.tv_CO_concentration);
+        tvCONote=findViewById(R.id.tv_CO_note);
         tvHeartRate=findViewById(R.id.tv_heart_rate);
+        tvHeartRateNote=findViewById(R.id.tv_heart_rate_note);
         tvBloodPressure=findViewById(R.id.tv_blood_pressure);
+        tvBloodPressureNote=findViewById(R.id.tv_blood_pressure_note);
         tvBloodFat=findViewById(R.id.tv_blood_fat);
-
+        tvBloodFatNote=findViewById(R.id.tv_blood_fat_note);
     }
 
     @Override
