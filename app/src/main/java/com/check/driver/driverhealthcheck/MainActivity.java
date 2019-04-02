@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,6 +47,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TextView tvBloodPressureNote;// 血压建议
     private TextView tvBloodFat;   //血脂
     private TextView tvBloodFatNote; //血脂建议
+    private Button btnStart;   //车辆启动
+    private Button btnEnd;      //车辆熄火
 
 
 
@@ -98,6 +101,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private void initListener() {
         ivMenu.setOnClickListener(this);
+        btnEnd.setOnClickListener(this);
+        btnStart.setOnClickListener(this);
     }
 
     private void initView() {
@@ -118,6 +123,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         tvBloodPressureNote=findViewById(R.id.tv_blood_pressure_note);
         tvBloodFat = findViewById(R.id.tv_blood_fat);
         tvBloodFatNote=findViewById(R.id.tv_blood_fat_note);
+        btnStart=findViewById(R.id.btn_start);
+        btnEnd=findViewById(R.id.btn_end);
     }
 
     @Override
@@ -132,6 +139,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     drawerLayout.openDrawer(GravityCompat.START);
                 }
                 break;
+            case R.id.btn_start:
+                //开始  用的intent
+                Intent intent = new Intent(this, MyService.class);
+                intent.putExtra(MyService.type, 1);
+                startService(intent);
+                break;
+            case R.id.btn_end:
+                //结束  用的intent1
+                Intent intent1 = new Intent(this, MyService.class);
+                intent1.putExtra(MyService.type, 2);
+                startService(intent1);
+                break;
+
 
 
         }
