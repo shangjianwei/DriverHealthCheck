@@ -6,8 +6,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.check.driver.driverhealthcheck.MainActivity;
 import com.check.driver.driverhealthcheck.R;
 import com.check.driver.driverhealthcheck.base.BaseActivity;
+import com.check.driver.driverhealthcheck.base.BaseMessageInit;
+import com.check.driver.driverhealthcheck.bean.UserBean;
+
+import org.litepal.LitePal;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
@@ -15,8 +20,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private EditText etPass;
     private Button btnRegister; //注册
     private Button btnLogin;    //登录
-
-
 
 
     @Override
@@ -33,22 +36,48 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void initView() {
-        etPhone=findViewById(R.id.et_phone);
-        etPass=findViewById(R.id.et_pass);
-        btnRegister=findViewById(R.id.btn_register);
-        btnLogin=findViewById(R.id.btn_login);
+        etPhone = findViewById(R.id.et_phone);
+        etPass = findViewById(R.id.et_pass);
+        btnRegister = findViewById(R.id.btn_register);
+        btnLogin = findViewById(R.id.btn_login);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_login:
-                showToast("登录成功，跳转到mainactivity");
+                initLogin();
+//                goToActivity(MainActivity.class);
                 break;
             case R.id.btn_register:
-                showToast("注册成功");
+                goToActivity(RegisterActivity.class);
                 break;
         }
 
+    }
+
+    private void initLogin() {
+        String phone = etPhone.getText().toString();
+        String pass = etPass.getText().toString();
+        if (isEmpty(phone)) {
+            showToast("手机号不能为空");
+            return;
+        }
+        if (isEmpty(pass)) {
+            showToast("密码不能为空");
+            return;
+        }
+        UserBean userBean = LitePal.where("name=? and pass= ?", phone, pass).findFirst(UserBean.class);
+        if (userBean == null) {
+            showToast("用户名或密码不正确");
+            return;
+        }
+        BaseMessageInit.INSTENCE.setUserBean(userBean);
+        goToActivity(MainActivity.class);
+
+    }
+
+    private boolean isEmpty(String msg) {
+        return msg == null || msg.endsWith("");
     }
 }

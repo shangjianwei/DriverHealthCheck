@@ -3,6 +3,7 @@ package com.check.driver.driverhealthcheck.base;
 import com.check.driver.driverhealthcheck.bean.BaseSetBean;
 import com.check.driver.driverhealthcheck.bean.CarOnBean;
 import com.check.driver.driverhealthcheck.bean.MessageBean;
+import com.check.driver.driverhealthcheck.bean.UserBean;
 
 /**
  * Created by shang on 2019/4/1.
@@ -13,6 +14,7 @@ public enum BaseMessageInit {
     private BaseSetBean baseSetBean;
     private CarOnBean carOnBean;
     private MessageBean messageBean;
+    private UserBean userBean;
 
     public MessageBean getMessageBean() {
         return messageBean;
@@ -36,5 +38,13 @@ public enum BaseMessageInit {
 
     public void setBaseSetBean(BaseSetBean baseSetBean) {
         this.baseSetBean = baseSetBean;
+    }
+
+    public UserBean getUserBean() {
+        return userBean;
+    }
+
+    public void setUserBean(UserBean userBean) {
+        this.userBean = userBean;
     }
 }
