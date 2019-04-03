@@ -1,6 +1,8 @@
 package com.check.driver.driverhealthcheck;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.NavigationView;
@@ -196,6 +198,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 time = day + "天" + hour + "小时";
             }
             tvDriveTime.setText(time);
+            if (cha>3600*4){
+                tvDriveNote.setText("您已属于疲劳驾驶，请及时休息");
+                tvDriveNote.setTextColor(Color.parseColor("#E22018"));
+                MediaPlayer mMediaPlayer;
+                mMediaPlayer=MediaPlayer.create(this, R.raw.drivetime);
+                mMediaPlayer.start();
+            }else {
+                tvDriveNote.setText("驾驶时间正常");
+                tvDriveNote.setTextColor(Color.parseColor("#CCCDCF"));
+            }
 
             if (messageBean == null) {
                 return;
@@ -203,12 +215,55 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             //温度
             String tem = getTemp(messageBean.getTem());
             tvTemperature.setText(tem);
+            if (messageBean.getTem()>28||messageBean.getTem()<10){
+                tvTempNote.setText("车内温度异常，请注意！");
+                tvTempNote.setTextColor(Color.parseColor("#E22018"));
+                MediaPlayer mMediaPlayer;
+                mMediaPlayer=MediaPlayer.create(this, R.raw.temp);
+                mMediaPlayer.start();
+            }else {
+                tvTempNote.setText("车内温度正常");
+                tvTempNote.setTextColor(Color.parseColor("#CCCDCF"));
+            }
+            //一氧化碳浓度
             String co = decimalFormat2.format(messageBean.getCo()) + "mg/m²";
             tvCOConcentration.setText(co);
+            if (messageBean.getCo()>30){
+                tvCONote.setText("车内一氧化碳浓度过高，请注意");
+                tvCONote.setTextColor(Color.parseColor("#E22018"));
+                MediaPlayer mMediaPlayer;
+                mMediaPlayer=MediaPlayer.create(this, R.raw.co);
+                mMediaPlayer.start();
+            }else {
+                tvCONote.setText("一氧化碳浓度正常");
+                tvCONote.setTextColor(Color.parseColor("#CCCDCF"));
+            }
+            //心率
             String heart = messageBean.getHeart() + "";
             tvHeartRate.setText(heart);
+            if (messageBean.getHeart()>100){
+                tvHeartRateNote.setText("您的心率过高，请注意");
+                tvHeartRateNote.setTextColor(Color.parseColor("#E22018"));
+                MediaPlayer mMediaPlayer;
+                mMediaPlayer=MediaPlayer.create(this, R.raw.heart);
+                mMediaPlayer.start();
+            }else {
+                tvHeartRateNote.setText("心率正常");
+                tvHeartRateNote.setTextColor(Color.parseColor("#CCCDCF"));
+            }
             String bp = messageBean.getBp_H() + "/" + messageBean.getBp_L();
             tvBloodPressure.setText(bp);
+            if (messageBean.getBp_H()>140||messageBean.getBp_L()>90){
+                tvBloodPressureNote.setText("您的血压过高，请注意");
+                tvBloodPressureNote.setTextColor(Color.parseColor("#E22018"));
+                MediaPlayer mMediaPlayer;
+                mMediaPlayer=MediaPlayer.create(this, R.raw.xueya);
+                mMediaPlayer.start();
+            }else {
+                tvBloodPressureNote.setText("血压正常");
+                tvBloodPressureNote.setTextColor(Color.parseColor("#CCCDCF"));
+            }
+
             String bf = decimalFormat2.format(messageBean.getBf());
             tvBloodFat.setText(bf);
         }
@@ -216,7 +271,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private DecimalFormat decimalFormat = new DecimalFormat("#.0");
-    private DecimalFormat decimalFormat2 = new DecimalFormat("#.00");
+    private DecimalFormat decimalFormat2 = new DecimalFormat("#0.00");
 
     private String getTemp(double d) {
         return decimalFormat.format(d) + "℃";
