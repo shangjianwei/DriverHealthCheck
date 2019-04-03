@@ -224,6 +224,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onStart() {
         super.onStart();
+
         isSHow = true;
         handler.sendEmptyMessage(1);
     }
