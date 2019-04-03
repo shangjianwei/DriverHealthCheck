@@ -196,6 +196,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 time = day + "天" + hour + "小时";
             }
             tvDriveTime.setText(time);
+
             if (messageBean == null) {
                 return;
             }
