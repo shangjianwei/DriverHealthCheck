@@ -1,5 +1,6 @@
 package com.check.driver.driverhealthcheck.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,8 @@ import com.check.driver.driverhealthcheck.R;
 import com.check.driver.driverhealthcheck.base.BaseActivity;
 import com.check.driver.driverhealthcheck.base.BaseMessageInit;
 import com.check.driver.driverhealthcheck.bean.UserBean;
+import com.check.driver.driverhealthcheck.service.MyService;
+import com.check.driver.driverhealthcheck.utils.SPUtils;
 
 import org.litepal.LitePal;
 
@@ -26,8 +29,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        initCheck();
         initView();
         initListener();
+    }
+
+    private void initCheck() {
+        int isOn = SPUtils.getInt(this, SPUtils.IS_ON, 0);
+        if (isOn == 1) {
+            Intent intent = new Intent(this, MyService.class);
+            startService(intent);
+        }
     }
 
     private void initListener() {
@@ -74,6 +86,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
         BaseMessageInit.INSTENCE.setUserBean(userBean);
         goToActivity(MainActivity.class);
+        finish();
 
     }
 
