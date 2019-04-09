@@ -31,6 +31,7 @@ public class MyService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         int i = super.onStartCommand(intent, flags, startId);
         int t = intent.getIntExtra(type, -1);
+        asdas
         if (t == 1) {
             //启动
             initOn();

@@ -9,9 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.check.driver.driverhealthcheck.R;
 import com.check.driver.driverhealthcheck.base.BaseActivity;
@@ -204,16 +201,6 @@ public class HistoryActivity extends BaseActivity implements View.OnClickListene
             chart.setData(data);
         }
     }
-
-
-
-
-
-
-
-
-
-
     private void initListener() {
         ivBack.setOnClickListener(this);
         radioGroup.setOnCheckedChangeListener(this);
