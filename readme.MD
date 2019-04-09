@@ -1,3 +1,8 @@
+图表和语音广播
+图表:
+广播：
+
+
 1需要做的功能：添加汽车开启结束按钮
 //开启汽车调用这些代码
          Intent intent = new Intent(this, MyService.class);

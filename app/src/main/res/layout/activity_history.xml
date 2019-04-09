@@ -45,7 +45,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="温度"
-                android:checked="true"/>
+               />
 
             <RadioButton
                 android:id="@+id/rb_hum"
@@ -59,28 +59,28 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="CO"
-                android:checked="true"/>
+               />
             <RadioButton
                 android:id="@+id/rb_heart_rate"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="心率"
-                android:checked="true"/>
+               />
             <RadioButton
                 android:id="@+id/rb_blood_pressure"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="血压"
-                android:checked="true"/>
+               />
             <RadioButton
                 android:id="@+id/rb_blood_fat"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="血脂"
-                android:checked="true"/>
+               />
 
         </RadioGroup>
 

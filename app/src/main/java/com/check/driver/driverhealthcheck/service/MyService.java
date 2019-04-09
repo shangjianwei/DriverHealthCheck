@@ -129,7 +129,7 @@ public class MyService extends Service {
         {
             double ran = random.nextDouble();
             int low = baseSetBean.getBp_H_low();
-            int up = baseSetBean.getBp_H_low();
+            int up = baseSetBean.getBp_H_up();
             int end = (int) ((up - low) * ran + low);
             messageBean.setBp_H(end);
         }

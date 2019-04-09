@@ -1,5 +1,6 @@
 package com.check.driver.driverhealthcheck.bean;
 
+
 import org.litepal.crud.LitePalSupport;
 
 /**
