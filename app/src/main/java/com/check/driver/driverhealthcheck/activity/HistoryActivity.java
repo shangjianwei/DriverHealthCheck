@@ -14,13 +14,18 @@ import android.widget.RadioGroup;
 import com.check.driver.driverhealthcheck.R;
 import com.check.driver.driverhealthcheck.base.BaseActivity;
 import com.check.driver.driverhealthcheck.bean.MessageBean;
+import com.check.driver.driverhealthcheck.utils.TimeUtils;
+import com.check.driver.driverhealthcheck.view.MyMarkerView;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.LimitLine;
+import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IFillFormatter;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
@@ -30,6 +35,7 @@ import org.litepal.LitePal;
 import org.litepal.crud.callback.FindMultiCallback;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static com.github.mikephil.charting.components.XAxis.XAxisPosition.BOTTOM;
@@ -91,12 +97,16 @@ public class HistoryActivity extends BaseActivity implements View.OnClickListene
 
         // force pinch zoom along both axis
         chart.setPinchZoom(true);
+        MyMarkerView mv = new MyMarkerView(this, R.layout.custom_marker_view);
+        // Set the marker to the chart
+        mv.setChartView(chart);
+        chart.setMarker(mv);
 
     }
 
     private double max = 0, min = 100000;
 
-    private void setData(List<MessageBean> list) {
+    private void setData(final List<MessageBean> list) {
         if (list == null || list.size() < 2) {
             return;
         }
@@ -148,28 +158,63 @@ public class HistoryActivity extends BaseActivity implements View.OnClickListene
             yAxis.setAxisMinimum((float) min);
         }
 
-
+//
         {   // // Create Limit Lines // //
-            LimitLine llXAxis = new LimitLine(9f, "Index 10");
-            llXAxis.setLineWidth(4f);
-            llXAxis.enableDashedLine(10f, 10f, 0f);
-            llXAxis.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
-            llXAxis.setTextSize(10f);
+//            LimitLine llXAxis = new LimitLine(9f, "Index 10");
+//            llXAxis.setLineWidth(4f);
+//            llXAxis.enableDashedLine(10f, 10f, 0f);
+//            llXAxis.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
+//            llXAxis.setTextSize(10f);
 
-            LimitLine ll1 = new LimitLine(150f, "Upper Limit");
-            ll1.setLineWidth(4f);
-            ll1.enableDashedLine(10f, 10f, 0f);
-            ll1.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);
-            ll1.setTextSize(10f);
-
-
+            yAxis.removeAllLimitLines();
+            LimitLine ll1 = null;
+            LimitLine llLow = null;
+            switch (type) {
+                case 0:
+                    ll1 = new LimitLine(28f, "Upper Limit");
+                    llLow = new LimitLine(10f, "Lower Limit");
+                    break;
+                case 1:
+//                    ll1 = new LimitLine(150f, "Upper Limit");
+                    break;
+                case 2:
+                    ll1 = new LimitLine(30f, "Upper Limit");
+                    break;
+                case 3:
+                    ll1 = new LimitLine(100f, "Upper Limit");
+                    break;
+                case 4:
+                    ll1 = new LimitLine(140, "Upper Limit");
+                    llLow = new LimitLine(90, "Lower Limit");
+                    break;
+            }
             // draw limit lines behind data instead of on top
             yAxis.setDrawLimitLinesBehindData(true);
             xAxis.setDrawLimitLinesBehindData(true);
             xAxis.setPosition(BOTTOM);
+            xAxis.setValueFormatter(new IAxisValueFormatter() {
+                @Override
+                public String getFormattedValue(float value, AxisBase axis) {
+                    int v = (int) value;
+                    return TimeUtils.date2HourAMin(new Date(list.get(v).getTime())) + "";
+                }
+            });
+            if (ll1 != null) {
+                ll1.setLineWidth(1f);
+                ll1.enableDashedLine(10f, 0f, 0f);
+                ll1.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_TOP);
+                ll1.setTextSize(10f);
+                // add limit lines
+                yAxis.addLimitLine(ll1);
+            }
+            if (llLow != null) {
+                llLow.setLineWidth(1f);
+                llLow.enableDashedLine(10f, 0f, 0f);
+                llLow.setLabelPosition(LimitLine.LimitLabelPosition.RIGHT_BOTTOM);
+                llLow.setTextSize(10f);
+                yAxis.addLimitLine(llLow);
+            }
 
-            // add limit lines
-            yAxis.addLimitLine(ll1);
 
             //xAxis.addLimitLine(llXAxis);
         }
@@ -200,7 +245,7 @@ public class HistoryActivity extends BaseActivity implements View.OnClickListene
             set1.setDrawIcons(false);
 
             // draw dashed line
-            set1.enableDashedLine(10f, 5f, 0f);
+            set1.enableDashedLine(10f, 0f, 0f);
 
             // black lines and points
             set1.setColor(Color.BLACK);
@@ -224,7 +269,7 @@ public class HistoryActivity extends BaseActivity implements View.OnClickListene
             set1.setValueTextSize(9f);
 
             // draw selection line as dashed
-            set1.enableDashedHighlightLine(10f, 5f, 0f);
+            set1.enableDashedHighlightLine(10f, 0f, 0f);
 
             // set the filled area
             set1.setDrawFilled(false);
@@ -257,8 +302,9 @@ public class HistoryActivity extends BaseActivity implements View.OnClickListene
             set2.enableDashedLine(10f, 5f, 0f);
 
             // black lines and points
-            set2.setColor(Color.RED);
-            set2.setCircleColor(Color.RED);
+            set2.setColor(Color.GREEN);
+
+            set2.setCircleColor(Color.GREEN);
             set2.setDrawCircles(false);
             set2.setDrawValues(false);
             set2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
