@@ -3,13 +3,14 @@ package com.check.driver.driverhealthcheck.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.check.driver.driverhealthcheck.R;
 import com.check.driver.driverhealthcheck.base.BaseActivity;
 import com.check.driver.driverhealthcheck.base.BaseMessageInit;
 import com.check.driver.driverhealthcheck.bean.BaseSetBean;
 
-public class SimulationActivity extends BaseActivity {
+public class SimulationActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText tem_low;
     private EditText tem_up;
@@ -27,12 +28,19 @@ public class SimulationActivity extends BaseActivity {
     private EditText bf_up;
     private EditText time;
 
+    private ImageView ivBack;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulation);
         initView();
+        initListener();
+    }
+
+    private void initListener() {
+        ivBack.setOnClickListener(this);
     }
 
     private void initView() {
@@ -51,6 +59,8 @@ public class SimulationActivity extends BaseActivity {
         time = findViewById(R.id.time);
         bp_L_low = findViewById(R.id.bp_L_low);
         bp_L_up = findViewById(R.id.bp_L_up);
+        ivBack=findViewById(R.id.iv_back);
+
     }
 
     @Override
@@ -99,4 +109,13 @@ public class SimulationActivity extends BaseActivity {
         this.finish();
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.iv_back:
+                onBackPressed();
+                break;
+        }
+
+    }
 }
