@@ -302,9 +302,9 @@ public class HistoryActivity extends BaseActivity implements View.OnClickListene
             set2.enableDashedLine(10f, 5f, 0f);
 
             // black lines and points
-            set2.setColor(Color.BLACK);
+            set2.setColor(Color.GREEN);
 
-            set2.setCircleColor(Color.BLACK);
+            set2.setCircleColor(Color.GREEN);
             set2.setDrawCircles(false);
             set2.setDrawValues(false);
             set2.setMode(LineDataSet.Mode.CUBIC_BEZIER);
