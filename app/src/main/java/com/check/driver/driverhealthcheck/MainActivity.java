@@ -20,6 +20,7 @@ import com.check.driver.driverhealthcheck.activity.HistoryActivity;
 import com.check.driver.driverhealthcheck.activity.SimulationActivity;
 import com.check.driver.driverhealthcheck.base.BaseActivity;
 import com.check.driver.driverhealthcheck.base.BaseMessageInit;
+import com.check.driver.driverhealthcheck.base.playVoice;
 import com.check.driver.driverhealthcheck.bean.BaseSetBean;
 import com.check.driver.driverhealthcheck.bean.CarOnBean;
 import com.check.driver.driverhealthcheck.bean.MessageBean;
@@ -79,6 +80,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             albumToUpdate.save();
         }
         BaseMessageInit.INSTENCE.setBaseSetBean(albumToUpdate);
+
+
+        playVoice.INSTANCE.create(this);
     }
 
     private void initData() {
@@ -132,13 +136,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         btnEnd = findViewById(R.id.btn_end);
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
 
             case R.id.iv_menu:
-                if (drawerLayout.isDrawerOpen(GravityCompat.START)
-                ) {
+
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     drawerLayout.closeDrawers();
                 } else {
                     drawerLayout.openDrawer(GravityCompat.START);
@@ -198,13 +203,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 time = day + "天" + hour + "小时";
             }
             tvDriveTime.setText(time);
-            if (cha>3600*4){
+            if (cha > 3600 * 4) {
                 tvDriveNote.setText("您已属于疲劳驾驶，请及时休息");
+                playVoice.INSTANCE.play(playVoice.DEIVETIME, this);
                 tvDriveNote.setTextColor(Color.parseColor("#E22018"));
                 MediaPlayer mMediaPlayer;
-                mMediaPlayer=MediaPlayer.create(this, R.raw.drivetime);
+                mMediaPlayer = MediaPlayer.create(this, R.raw.drivetime);
                 mMediaPlayer.start();
-            }else {
+            } else {
                 tvDriveNote.setText("驾驶时间正常");
                 tvDriveNote.setTextColor(Color.parseColor("#CCCDCF"));
             }
@@ -215,51 +221,55 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             //温度
             String tem = getTemp(messageBean.getTem());
             tvTemperature.setText(tem);
-            if (messageBean.getTem()>28||messageBean.getTem()<10){
+            if (messageBean.getTem() > 28 || messageBean.getTem() < 10) {
                 tvTempNote.setText("车内温度异常，请注意！");
+                playVoice.INSTANCE.play(playVoice.TEMP, this);
                 tvTempNote.setTextColor(Color.parseColor("#E22018"));
                 MediaPlayer mMediaPlayer;
-                mMediaPlayer=MediaPlayer.create(this, R.raw.temp);
+                mMediaPlayer = MediaPlayer.create(this, R.raw.temp);
                 mMediaPlayer.start();
-            }else {
+            } else {
                 tvTempNote.setText("车内温度正常");
                 tvTempNote.setTextColor(Color.parseColor("#CCCDCF"));
             }
             //一氧化碳浓度
             String co = decimalFormat2.format(messageBean.getCo()) + "mg/m²";
             tvCOConcentration.setText(co);
-            if (messageBean.getCo()>30){
+            if (messageBean.getCo() > 30) {
+                playVoice.INSTANCE.play(playVoice.CO, this);
                 tvCONote.setText("车内一氧化碳浓度过高，请注意");
                 tvCONote.setTextColor(Color.parseColor("#E22018"));
                 MediaPlayer mMediaPlayer;
-                mMediaPlayer=MediaPlayer.create(this, R.raw.co);
+                mMediaPlayer = MediaPlayer.create(this, R.raw.co);
                 mMediaPlayer.start();
-            }else {
+            } else {
                 tvCONote.setText("一氧化碳浓度正常");
                 tvCONote.setTextColor(Color.parseColor("#CCCDCF"));
             }
             //心率
             String heart = messageBean.getHeart() + "";
             tvHeartRate.setText(heart);
-            if (messageBean.getHeart()>100){
+            if (messageBean.getHeart() > 100) {
+                playVoice.INSTANCE.play(playVoice.HEART, this);
                 tvHeartRateNote.setText("您的心率过高，请注意");
                 tvHeartRateNote.setTextColor(Color.parseColor("#E22018"));
                 MediaPlayer mMediaPlayer;
-                mMediaPlayer=MediaPlayer.create(this, R.raw.heart);
+                mMediaPlayer = MediaPlayer.create(this, R.raw.heart);
                 mMediaPlayer.start();
-            }else {
+            } else {
                 tvHeartRateNote.setText("心率正常");
                 tvHeartRateNote.setTextColor(Color.parseColor("#CCCDCF"));
             }
             String bp = messageBean.getBp_H() + "/" + messageBean.getBp_L();
             tvBloodPressure.setText(bp);
-            if (messageBean.getBp_H()>140||messageBean.getBp_L()>90){
+            if (messageBean.getBp_H() > 140 || messageBean.getBp_L() > 90) {
                 tvBloodPressureNote.setText("您的血压过高，请注意");
+                playVoice.INSTANCE.play(playVoice.XUEYA, this);
                 tvBloodPressureNote.setTextColor(Color.parseColor("#E22018"));
                 MediaPlayer mMediaPlayer;
-                mMediaPlayer=MediaPlayer.create(this, R.raw.xueya);
+                mMediaPlayer = MediaPlayer.create(this, R.raw.xueya);
                 mMediaPlayer.start();
-            }else {
+            } else {
                 tvBloodPressureNote.setText("血压正常");
                 tvBloodPressureNote.setTextColor(Color.parseColor("#CCCDCF"));
             }
@@ -289,5 +299,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onStop() {
         super.onStop();
         isSHow = false;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        playVoice.INSTANCE.releaseSoundPool();
     }
 }
