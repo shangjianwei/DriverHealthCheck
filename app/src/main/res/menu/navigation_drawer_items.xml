@@ -21,11 +21,16 @@
             <item
                 android:id="@+id/navItem2"
                 android:icon="@mipmap/set"
-                android:title="设置" />
+                android:title="区间设置" />
+            <item
+                android:id="@+id/navItem4"
+                android:icon="@mipmap/change"
+                android:title="修改个人信息" />
+
             <item
                 android:id="@+id/navItem3"
                 android:icon="@mipmap/out"
-                android:title="退出" />
+                android:title="推出" />
         </menu>
     </item>
 

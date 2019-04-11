@@ -91,6 +91,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private boolean isEmpty(String msg) {
-        return msg == null || msg.endsWith("");
+        return msg == null || msg.equals("");
     }
 }

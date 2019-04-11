@@ -9,27 +9,29 @@ import android.widget.ImageView;
 
 import com.check.driver.driverhealthcheck.R;
 import com.check.driver.driverhealthcheck.base.BaseActivity;
+import com.check.driver.driverhealthcheck.base.BaseMessageInit;
 import com.check.driver.driverhealthcheck.bean.UserBean;
 
 import org.litepal.LitePal;
 
-public class RegisterActivity extends BaseActivity implements View.OnClickListener {
+public class ChangeInfoActivity extends BaseActivity implements View.OnClickListener {
 
     private EditText etName;
     private EditText etPhone;
-    private EditText etPass;
-    private EditText etPass2;
+    private EditText etOldPass;
+    private EditText etNewPass;
+    private EditText etNewPass2;
     private ImageView ivBack;
     private Button btnRegister;
     private EditText etHeight;
     private EditText etWeight;
     private EditText etAge;
-
+    private String passa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_change_info);
         initView();
         initListener();
     }
@@ -40,38 +42,56 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void initView() {
+
         etName = findViewById(R.id.et_name);
         etPhone = findViewById(R.id.et_phone);
-        etPass = findViewById(R.id.et_pass);
-        etPass2 = findViewById(R.id.et_pass2);
+        etOldPass = findViewById(R.id.et_pass);
+        etNewPass =findViewById(R.id.et_new_pass);
+        etNewPass2 = findViewById(R.id.et_pass2);
         ivBack = findViewById(R.id.iv_back);
         btnRegister = findViewById(R.id.btn_register);
         etAge=findViewById(R.id.et_age);
         etHeight=findViewById(R.id.et_height);
         etWeight=findViewById(R.id.et_weight);
+
+        UserBean bean = BaseMessageInit.INSTENCE.getUserBean();;
+        String userName = bean.getUserName();
+        String phone =bean.getName();
+        Integer age =bean.getAge();
+        Double height =bean.getHeight();
+        Double weight =bean.getWeight();
+        passa=bean.getPass();
+
+
+        etName.setText(userName);
+        etPhone.setText(phone);
+        etAge.setText(age+"");
+        etHeight.setText(height+"");
+        etWeight.setText(weight+"");
+
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.iv_back:
                 onBackPressed();
                 break;
             case R.id.btn_register:
-                //注册成功，跳到登录界面
-                initRegist();
+                //修改成功，退出登录
+                initChange();
                 break;
         }
-
     }
 
-    private void initRegist() {
+    private void initChange() {
         String name = etName.getText().toString();
-        String pass = etPass.getText().toString();
-        String pass2 = etPass2.getText().toString();
+        String pass = etOldPass.getText().toString();
+        String pass1 =etNewPass.getText().toString();
+        String pass2 = etNewPass2.getText().toString();
         String phone = etPhone.getText().toString();
-        Integer height =Integer.parseInt(etHeight.getText().toString());
-        Integer weight =Integer.parseInt(etWeight.getText().toString());
+        Double height =Double.parseDouble(etHeight.getText().toString());
+        Double weight =Double.parseDouble(etWeight.getText().toString());
         Integer age =Integer.parseInt(etAge.getText().toString());
 
 
@@ -79,38 +99,41 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             showToast("姓名不能为空");
             return;
         }
+        if (isEmpty(pass1)) {
+            showToast("新密码不能为空");
+            return;
+        }
         if (isEmpty(pass) || isEmpty(pass2)) {
-            showToast("密码不能为空");
+            showToast("原密码不能为空");
             return;
         }
         if (isEmpty(phone)) {
             showToast("电话不能为空");
             return;
         }
-        if (!pass.equals(pass2)) {
-            showToast("手机号不能为空");
+        if (!pass.equals(passa)){
+            showToast("原密码不正确");
             return;
         }
-        UserBean userBean = LitePal.where("name=?", phone).findFirst(UserBean.class);
-        if (userBean != null) {
-            showToast("该手机号已注册");
+        if (!pass1.equals(pass2)) {
+            showToast("两次密码不一致");
             return;
         }
 
-        UserBean userBeans = new UserBean();
+
+        UserBean userBeans = BaseMessageInit.INSTENCE.getUserBean();
         userBeans.setName(phone);
-        userBeans.setPass(pass);
+        userBeans.setPass(pass2);
         userBeans.setUserName(name);
         userBeans.setAge(age);
         userBeans.setHeight(height);
         userBeans.setWeight(weight);
         userBeans.save();
-        showToast("注册成功");
+        goToActivity(LoginActivity.class);
         finish();
     }
 
     private boolean isEmpty(String msg) {
         return msg == null || msg.equals("");
     }
-
 }

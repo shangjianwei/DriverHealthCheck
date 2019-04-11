@@ -171,21 +171,21 @@ public class HistoryActivity extends BaseActivity implements View.OnClickListene
             LimitLine llLow = null;
             switch (type) {
                 case 0:
-                    ll1 = new LimitLine(28f, "Upper Limit");
-                    llLow = new LimitLine(10f, "Lower Limit");
+                    ll1 = new LimitLine(28f, "警戒线");
+                    llLow = new LimitLine(10f, "警戒线");
                     break;
                 case 1:
-//                    ll1 = new LimitLine(150f, "Upper Limit");
+//                    ll1 = new LimitLine(150f, "警戒线");
                     break;
                 case 2:
-                    ll1 = new LimitLine(30f, "Upper Limit");
+                    ll1 = new LimitLine(30f, "警戒线");
                     break;
                 case 3:
-                    ll1 = new LimitLine(100f, "Upper Limit");
+                    ll1 = new LimitLine(100f, "警戒线");
                     break;
                 case 4:
-                    ll1 = new LimitLine(140, "Upper Limit");
-                    llLow = new LimitLine(90, "Lower Limit");
+                    ll1 = new LimitLine(140, "警戒线");
+                    llLow = new LimitLine(90, "警戒线");
                     break;
             }
             // draw limit lines behind data instead of on top
@@ -302,9 +302,9 @@ public class HistoryActivity extends BaseActivity implements View.OnClickListene
             set2.enableDashedLine(10f, 5f, 0f);
 
             // black lines and points
-            set2.setColor(Color.GREEN);
+            set2.setColor(Color.BLACK);
 
-            set2.setCircleColor(Color.GREEN);
+            set2.setCircleColor(Color.BLACK);
             set2.setDrawCircles(false);
             set2.setDrawValues(false);
             set2.setMode(LineDataSet.Mode.CUBIC_BEZIER);

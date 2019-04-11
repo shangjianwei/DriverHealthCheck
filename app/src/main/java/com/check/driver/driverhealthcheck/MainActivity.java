@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.check.driver.driverhealthcheck.activity.ChangeInfoActivity;
 import com.check.driver.driverhealthcheck.activity.HistoryActivity;
 import com.check.driver.driverhealthcheck.activity.SimulationActivity;
 import com.check.driver.driverhealthcheck.base.BaseActivity;
@@ -24,6 +25,7 @@ import com.check.driver.driverhealthcheck.base.playVoice;
 import com.check.driver.driverhealthcheck.bean.BaseSetBean;
 import com.check.driver.driverhealthcheck.bean.CarOnBean;
 import com.check.driver.driverhealthcheck.bean.MessageBean;
+import com.check.driver.driverhealthcheck.bean.UserBean;
 import com.check.driver.driverhealthcheck.service.MyService;
 import com.check.driver.driverhealthcheck.utils.SPUtils;
 
@@ -56,6 +58,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TextView tvBloodFatNote; //血脂建议
     private Button btnStart;   //车辆启动
     private Button btnEnd;      //车辆熄火
+    private TextView tv_head;  //人名
 
 
     @Override
@@ -64,8 +67,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         initGetItem();
         initView();
+        initName();
         initListener();
         initData();
+    }
+
+    private void initName() {
+        if (navigationView != null) {
+            tv_head = (TextView) navigationView.getHeaderView(0).findViewById(R.id.tv_head);
+        }
+        UserBean bean =BaseMessageInit.INSTENCE.getUserBean();;
+        String name = bean.getUserName();
+        tv_head.setText(name);
     }
 
     private void initGetItem() {
@@ -99,7 +112,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         break;
                     case R.id.navItem3:
                         //退出
-                        showToast("3");
+                        onBackPressed();
+                        break;
+                    case R.id.navItem4:
+                        goToActivity(ChangeInfoActivity.class);
                         break;
 
                 }
@@ -134,6 +150,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         tvBloodFatNote = findViewById(R.id.tv_blood_fat_note);
         btnStart = findViewById(R.id.btn_start);
         btnEnd = findViewById(R.id.btn_end);
+
+
     }
 
 
@@ -207,9 +225,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 tvDriveNote.setText("您已属于疲劳驾驶，请及时休息");
                 playVoice.INSTANCE.play(playVoice.DEIVETIME, this);
                 tvDriveNote.setTextColor(Color.parseColor("#E22018"));
-                MediaPlayer mMediaPlayer;
-                mMediaPlayer = MediaPlayer.create(this, R.raw.drivetime);
-                mMediaPlayer.start();
+
             } else {
                 tvDriveNote.setText("驾驶时间正常");
                 tvDriveNote.setTextColor(Color.parseColor("#CCCDCF"));
@@ -225,9 +241,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 tvTempNote.setText("车内温度异常，请注意！");
                 playVoice.INSTANCE.play(playVoice.TEMP, this);
                 tvTempNote.setTextColor(Color.parseColor("#E22018"));
-                MediaPlayer mMediaPlayer;
-                mMediaPlayer = MediaPlayer.create(this, R.raw.temp);
-                mMediaPlayer.start();
+
             } else {
                 tvTempNote.setText("车内温度正常");
                 tvTempNote.setTextColor(Color.parseColor("#CCCDCF"));
@@ -239,9 +253,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 playVoice.INSTANCE.play(playVoice.CO, this);
                 tvCONote.setText("车内一氧化碳浓度过高，请注意");
                 tvCONote.setTextColor(Color.parseColor("#E22018"));
-                MediaPlayer mMediaPlayer;
-                mMediaPlayer = MediaPlayer.create(this, R.raw.co);
-                mMediaPlayer.start();
+
             } else {
                 tvCONote.setText("一氧化碳浓度正常");
                 tvCONote.setTextColor(Color.parseColor("#CCCDCF"));
@@ -253,9 +265,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 playVoice.INSTANCE.play(playVoice.HEART, this);
                 tvHeartRateNote.setText("您的心率过高，请注意");
                 tvHeartRateNote.setTextColor(Color.parseColor("#E22018"));
-                MediaPlayer mMediaPlayer;
-                mMediaPlayer = MediaPlayer.create(this, R.raw.heart);
-                mMediaPlayer.start();
+
             } else {
                 tvHeartRateNote.setText("心率正常");
                 tvHeartRateNote.setTextColor(Color.parseColor("#CCCDCF"));
@@ -266,9 +276,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 tvBloodPressureNote.setText("您的血压过高，请注意");
                 playVoice.INSTANCE.play(playVoice.XUEYA, this);
                 tvBloodPressureNote.setTextColor(Color.parseColor("#E22018"));
-                MediaPlayer mMediaPlayer;
-                mMediaPlayer = MediaPlayer.create(this, R.raw.xueya);
-                mMediaPlayer.start();
+
             } else {
                 tvBloodPressureNote.setText("血压正常");
                 tvBloodPressureNote.setTextColor(Color.parseColor("#CCCDCF"));

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <litepal>
     <dbname value="dhc" />
-    <version value="4" />
+    <version value="5" />
     <list>
         <!--配置生成参数区间-->
         <mapping class="com.check.driver.driverhealthcheck.bean.BaseSetBean" />

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context="com.check.driver.driverhealthcheck.activity.RegisterActivity">
+    tools:context="com.check.driver.driverhealthcheck.activity.ChangeInfoActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:background="#1E82D2"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textColor="#ffffff"
-            android:text="注册"
+            android:text="修改信息"
             android:textSize="20sp"
             />
 
@@ -33,6 +33,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_50"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -167,7 +168,7 @@
                 android:layout_width="wrap_content"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_height="wrap_content"
-                android:text="密码："
+                android:text="原密码："
                 android:layout_centerVertical="true"
                 />
 
@@ -176,7 +177,30 @@
                 android:id="@+id/et_pass"
                 android:layout_width="@dimen/dp_250"
                 android:layout_height="wrap_content"
-                android:hint="请输入您的密码"
+                android:hint="请输入您的原密码"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginRight="@dimen/dp_10"
+                android:background="@drawable/edit_background"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:text="新密码：" />
+
+            <EditText
+                android:layout_alignParentRight="true"
+                android:id="@+id/et_new_pass"
+                android:layout_width="@dimen/dp_250"
+                android:layout_height="wrap_content"
+                android:hint="请输入您的新密码"
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginRight="@dimen/dp_10"
                 android:background="@drawable/edit_background"
@@ -216,7 +240,7 @@
             android:background="#2196F3"
             android:paddingBottom="@dimen/dp_8"
             android:paddingTop="@dimen/dp_8"
-            android:text="注册"
+            android:text="保存"
             android:textColor="@android:color/white"
             android:textSize="@dimen/dp_20" />
 
