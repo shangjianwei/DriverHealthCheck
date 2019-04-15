@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.check.driver.driverhealthcheck.R;
 import com.check.driver.driverhealthcheck.base.BaseActivity;
@@ -27,6 +28,7 @@ public class ChangeInfoActivity extends BaseActivity implements View.OnClickList
     private EditText etWeight;
     private EditText etAge;
     private String passa;
+    private TextView tvDel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +41,11 @@ public class ChangeInfoActivity extends BaseActivity implements View.OnClickList
     private void initListener() {
         ivBack.setOnClickListener(this);
         btnRegister.setOnClickListener(this);
+        tvDel.setOnClickListener(this);
     }
 
     private void initView() {
-
+        tvDel=findViewById(R.id.tv_del);
         etName = findViewById(R.id.et_name);
         etPhone = findViewById(R.id.et_phone);
         etOldPass = findViewById(R.id.et_pass);
@@ -81,7 +84,18 @@ public class ChangeInfoActivity extends BaseActivity implements View.OnClickList
                 //修改成功，退出登录
                 initChange();
                 break;
+            case R.id.tv_del:
+                //删除
+                del();
+                break;
         }
+    }
+
+    private void del() {
+        UserBean userBean1 = BaseMessageInit.INSTENCE.getUserBean();
+        userBean1.delete();
+        goToActivity(LoginActivity.class);
+
     }
 
     private void initChange() {

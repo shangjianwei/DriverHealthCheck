@@ -30,7 +30,7 @@
             <item
                 android:id="@+id/navItem3"
                 android:icon="@mipmap/out"
-                android:title="推出" />
+                android:title="退出" />
         </menu>
     </item>
 
