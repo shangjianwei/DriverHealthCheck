@@ -3,6 +3,7 @@ package com.check.driver.driverhealthcheck;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.NavigationView;
@@ -60,7 +61,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private Button btnStart;   //车辆启动
     private Button btnEnd;      //车辆熄火
     private TextView tv_head;  //人名
-
+    private TextView tvCall;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,10 +132,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void initListener() {
         ivMenu.setOnClickListener(this);
         btnEnd.setOnClickListener(this);
+        tvCall.setOnClickListener(this);
         btnStart.setOnClickListener(this);
     }
 
     private void initView() {
+        tvCall=findViewById(R.id.tv_call);
         ivMenu = findViewById(R.id.iv_menu);
         drawerLayout = (DrawerLayout) findViewById(R.id.dl_home);
         navigationView = (NavigationView) findViewById(R.id.navigation);
@@ -182,6 +185,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 Intent intent1 = new Intent(this, MyService.class);
                 intent1.putExtra(MyService.type, 2);
                 startService(intent1);
+                break;
+            case R.id.tv_call:
+                Uri uri = Uri.parse("tel:122");
+                Intent intent3 = new Intent(Intent.ACTION_DIAL, uri);
+                startActivity(intent3);
                 break;
         }
     }
