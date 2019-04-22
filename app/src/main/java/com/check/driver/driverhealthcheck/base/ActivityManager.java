@@ -2,6 +2,8 @@ package com.check.driver.driverhealthcheck.base;
 
 import android.app.Activity;
 
+import com.check.driver.driverhealthcheck.activity.LoginActivity;
+
 import java.util.Stack;
 
 /**
@@ -110,5 +112,16 @@ public enum ActivityManager {
 
     public int getActivityNum() {
         return activityStack.size();
+    }
+
+    public void clearOtherActivity(LoginActivity loginActivity) {
+        for (int i = 0, size = activityStack.size(); i < size; i++) {
+            if (null != activityStack.get(i)&&activityStack.get(i)!=loginActivity) {
+                Activity activity = activityStack.get(i);
+                if (!activity.isFinishing()) {
+                    activity.finish();
+                }
+            }
+        }
     }
 }

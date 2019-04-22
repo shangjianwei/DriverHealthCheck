@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.check.driver.driverhealthcheck.MainActivity;
 import com.check.driver.driverhealthcheck.R;
+import com.check.driver.driverhealthcheck.base.ActivityManager;
 import com.check.driver.driverhealthcheck.base.BaseActivity;
 import com.check.driver.driverhealthcheck.base.BaseMessageInit;
 import com.check.driver.driverhealthcheck.bean.UserBean;
@@ -29,9 +30,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        clearActivity();
         initCheck();
         initView();
         initListener();
+    }
+    private void clearActivity() {
+        ActivityManager.INSTANCE.clearOtherActivity(this);
     }
 
     private void initCheck() {
