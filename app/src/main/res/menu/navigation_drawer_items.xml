@@ -11,7 +11,10 @@
 
     <item android:title="">
         <menu>
-
+            <item
+                android:id="@+id/navItem5"
+                android:icon="@mipmap/historydata"
+                android:title="历史数据" />
 
             <item
                 android:id="@+id/navItem1"

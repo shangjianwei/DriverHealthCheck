@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.check.driver.driverhealthcheck.activity.ChangeInfoActivity;
 import com.check.driver.driverhealthcheck.activity.HistoryActivity;
+import com.check.driver.driverhealthcheck.activity.HistoryDataActivity;
 import com.check.driver.driverhealthcheck.activity.SimulationActivity;
 import com.check.driver.driverhealthcheck.base.BaseActivity;
 import com.check.driver.driverhealthcheck.base.BaseMessageInit;
@@ -116,6 +117,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         break;
                     case R.id.navItem4:
                         goToActivity(ChangeInfoActivity.class);
+                        break;
+                    case R.id.navItem5:
+                        goToActivity(HistoryDataActivity.class);
                         break;
 
                 }
