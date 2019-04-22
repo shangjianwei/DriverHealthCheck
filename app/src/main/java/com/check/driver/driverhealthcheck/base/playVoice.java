@@ -11,8 +11,6 @@ import android.util.Log;
 import com.check.driver.driverhealthcheck.R;
 import com.check.driver.driverhealthcheck.utils.SPUtils;
 
-import java.util.LinkedList;
-
 public enum playVoice {
     INSTANCE;
     private SoundPool soundPool;

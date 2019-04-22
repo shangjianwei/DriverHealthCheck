@@ -240,7 +240,7 @@ public class HistoryActivity extends BaseActivity implements View.OnClickListene
             chart.notifyDataSetChanged();
         } else {
             // create a dataset and give it a type
-            set1 = new LineDataSet(valueH, "DataSet 1");
+            set1 = new LineDataSet(valueH, "");
 
             set1.setDrawIcons(false);
 
@@ -290,9 +290,9 @@ public class HistoryActivity extends BaseActivity implements View.OnClickListene
             }
             // create a dataset and give it a type
             if (type == 4) {
-                set2 = new LineDataSet(valueL, "DataSet 2");
+                set2 = new LineDataSet(valueL, "");
             } else {
-                set2 = new LineDataSet(valueH, "DataSet 2");
+                set2 = new LineDataSet(valueH, "");
             }
 
 

@@ -46,5 +46,6 @@ public enum BaseMessageInit {
 
     public void setUserBean(UserBean userBean) {
         this.userBean = userBean;
+
     }
 }

@@ -35,6 +35,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         initView();
         initListener();
     }
+
     private void clearActivity() {
         ActivityManager.INSTANCE.clearOtherActivity(this);
     }
@@ -90,6 +91,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             return;
         }
         BaseMessageInit.INSTENCE.setUserBean(userBean);
+
         goToActivity(MainActivity.class);
         finish();
 

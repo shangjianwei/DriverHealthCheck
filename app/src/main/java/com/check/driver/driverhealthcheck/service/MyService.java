@@ -55,6 +55,7 @@ public class MyService extends Service {
         CarOnBean carOnBean = new CarOnBean();
         carOnBean.setOnTime(time);
         carOnBean.setEndTime(System.currentTimeMillis());
+        carOnBean.save();
     }
 
     private boolean isOnCar;
